@@ -5,7 +5,7 @@ from django.forms import BaseInlineFormSet
 from .models import Article, Tag, Scope
 
 
-class RelationshipInlineFormset(BaseInlineFormSet):
+class ScopeInlineFormset(BaseInlineFormSet):
     def clean(self):
         cnt = 0
         for form in self.forms:
@@ -21,6 +21,7 @@ class RelationshipInlineFormset(BaseInlineFormSet):
 class ScopeInline(admin.TabularInline):
     model = Scope
     extra = 1
+    formset = ScopeInlineFormset
     verbose_name = 'Тематика статьи'
 
 
